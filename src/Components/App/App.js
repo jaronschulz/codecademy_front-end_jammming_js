@@ -49,10 +49,20 @@ class App extends Component {
     const playlist = this.state.playlistTracks;
 
     const newPlaylist = playlist.filter(dTrack => dTrack.id !== track.id);
-
-    console.log(newPlaylist);
     this.setState({
       playlistTracks: newPlaylist,
+    });
+  }
+
+  updatePlaylistName = (name) => {
+    this.setState({
+      playlistName: name,
+    });
+  }
+
+  savePlaylist = () => {
+    this.state.playlistTracks.forEach((element) => {
+      const trackURIs = element.uri;
     });
   }
 
@@ -71,6 +81,8 @@ class App extends Component {
               playlistName={this.state.playlistName}
               playlistTracks={this.state.playlistTracks}
               onRemove={this.removeTrack}
+              onNameChange={this.updatePlaylistName}
+              onSave={this.savePlaylist}
             />
           </div>
         </div>
