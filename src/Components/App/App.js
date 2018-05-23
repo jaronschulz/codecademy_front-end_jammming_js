@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import SearchBar from '../SearchBar/SearchBar';
 import SearchResults from '../SearchResults/SearchResults';
 import Playlist from '../Playlist/Playlist';
+import Spotify from '../../util/Spotify';
 import './App.css';
 
 
@@ -9,18 +10,11 @@ class App extends Component {
   state = {
     searchResults: [
       {
-        name: 'Juhuu',
-        artist: 'Marlene',
-        album: 'Fuckshit',
-        id: 1,
+        name: 'Free',
+        artist: 'Freeman',
+        album: 'Freedome',
+        id: 3,
       },
-      {
-        name: 'asf',
-        artist: 'Patene',
-        album: 'Solomone',
-        id: 2,
-      },
-
     ],
     playlistName: 'Schindlers List',
     playlistTracks: [
@@ -67,8 +61,16 @@ class App extends Component {
   }
 
   search = (term) => {
-    console.log(term);
+    Spotify.search(term);
+    this.setState.searchResults({
+      id: term.id,
+      name: term.name,
+      artist: term.artis,
+      album: term.album,
+      uri: term.uri,
+    });
   }
+
 
   render() {
     return (
