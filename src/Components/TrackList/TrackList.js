@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Track from '../Track/Track';
 import './TrackList.css';
 
@@ -12,8 +11,8 @@ const TrackList = props => (
         onAdd={props.onAdd}
         onRemove={props.onRemove}
         isRemoval={props.isRemoval}
-      />))
-      }
+      />),
+    )}
   </div>);
 
 

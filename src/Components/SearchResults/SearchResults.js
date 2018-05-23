@@ -6,7 +6,11 @@ import './SearchResults.css';
 const SearchResults = props => (
   <div className="SearchResults">
     <h2>Results</h2>
-    <TrackList onAdd={props.onAdd} tracks={props.searchResults} isRemoval={false} />
+    <TrackList
+      tracks={props.searchResults}
+      onAdd={props.onAdd}
+      isRemoval={false}
+    />
   </div>
 );
 
