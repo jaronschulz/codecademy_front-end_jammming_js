@@ -10,10 +10,16 @@ class App extends Component {
   state = {
     searchResults: [
       {
-        name: 'Free',
+        name: 'FreeONE',
         artist: 'Freeman',
-        album: 'Freedome',
-        id: 3,
+        album: 'FLick',
+        id: 1,
+      },
+      {
+        name: 'FreeTwo',
+        artist: 'Freeman',
+        album: 'Nonesense',
+        id: 2,
       },
     ],
     playlistName: 'Schindlers List',
@@ -27,24 +33,29 @@ class App extends Component {
     ],
   };
 
-
-  addTrack = (track) => {
-    const searchArray = this.state.playlistTracks;
-
-    if (searchArray.find(savedTrack => savedTrack.id !== track.id)) {
-      searchArray.push(track);
-      this.setState({
-        playlistTracks: searchArray,
-      });
-    }
-  }
+   addTrack = (track) => {
+     const arr = this.state.playlistTracks;
+     if (arr.length === 0) {
+       arr.push(track); this.setState({
+         playlistTracks: arr,
+       });
+     } else if (arr.find(savedTrack => savedTrack.id !== track.id)) {
+       if (arr.find(savedTrack => savedTrack.id === track.id)) {
+         return null;
+       }
+       arr.push(track);
+       this.setState({
+         playlistTracks: arr,
+       });
+     }
+   }
 
   removeTrack = (track) => {
-    const playlist = this.state.playlistTracks;
-
-    const newPlaylist = playlist.filter(dTrack => dTrack.id !== track.id);
+    const arr = this.state.playlistTracks;
+    const indexOfTrack = arr.indexOf(track);
+    arr.splice(indexOfTrack, 1);
     this.setState({
-      playlistTracks: newPlaylist,
+      playlistTracks: arr,
     });
   }
 
@@ -60,16 +71,19 @@ class App extends Component {
     });
   }
 
-  search = (term) => {
-    Spotify.search(term);
-    this.setState.searchResults({
-      id: term.id,
-      name: term.name,
-      artist: term.artis,
-      album: term.album,
-      uri: term.uri,
-    });
-  }
+  // search = new Spotify.search();
+
+
+  // search = (term) => {
+  //   Spotify.search(term);
+  //   this.setState.searchResults({
+  //     id: term.id,
+  //     name: term.name,
+  //     artist: term.artis,
+  //     album: term.album,
+  //     uri: term.uri,
+  //   });
+  // }
 
 
   render() {

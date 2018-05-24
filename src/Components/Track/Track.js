@@ -13,9 +13,9 @@ const Track = (props) => {
 
   const renderAction = (isRemoval) => {
     if (props.isRemoval) {
-      return <a className="Track-action" onClick={removeTrack}>-</a>;
+      return <a className="Track-action" onClick={removeTrack}> - </a>;
     }
-    return <a className="Track-action" onClick={addTrack}>+</a>;
+    return <a className="Track-action" onClick={addTrack}>  + </a>;
   };
 
   return (
